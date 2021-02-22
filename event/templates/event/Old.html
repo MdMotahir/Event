@@ -1,0 +1,20 @@
+{% extends 'event/base.html' %}
+
+{%block content%}
+            <h2>Old Events</h2>
+            <div id="blog">
+                {% for i in events%}
+                    <div class="blogdiv">
+                        <a class="link" href="{%url 'Event Details' i.slug%}">
+                        <div class="image"><img src="{{i.image.url}}" alt="Getting started with Artificial Intelligence" width="100%" height="100%"></div>
+                        <div class="details">
+                            <p class="heading">{{i.name}}</p>
+                            <p class="author">Organiser: {{i.organiser}}</p>
+                            <p>Start Date: {{i.start_date}}</p>
+                            <p>End Date: {{i.end_date}}</p>
+                            <p>Total Booked: {{i.slot_booked}}<span> | Total Seat: {{i.maximum_participants}}</span></p>
+                        </div></a>
+                    </div>
+                {% endfor %}
+            </div>
+{% endblock %}

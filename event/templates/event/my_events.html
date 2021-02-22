@@ -1,0 +1,55 @@
+{% extends 'event/base.html' %}
+
+{%block content%}
+            {% if user.category == 'Organiser' %}
+                <h2>Booked Events</h2>
+                <div id="blog">
+                    {% for i in booked_events%}
+                        <div class="blogdiv">
+                            <a class="link" href="{%url 'Event Details' i.event.slug%}">
+                            <div class="image"><img src="{{i.event.image.url}}" alt="Getting started with Artificial Intelligence" width="100%" height="100%"></div>
+                            <div class="details">
+                                <p class="heading">{{i.event.name}}</p>
+                                <p class="author">Organiser: {{i.event.organiser}}</p>
+                                <p>Start Date: {{i.event.start_date}}</p>
+                                <p>End Date: {{i.event.end_date}}</p>
+                                <p>Total Booked: {{i.event.slot_booked}}<span> | Total Seat: {{i.event.maximum_participants}}</span></p>
+                            </div></a>
+                        </div>
+                    {% endfor %}
+                </div>
+                <h2>Events Organised By You</h2>
+                <div id="blog">
+                    {% for i in events%}
+                        <div class="blogdiv">
+                            <a class="link" href="{%url 'Event Details' i.slug%}">
+                            <div class="image"><img src="{{i.image.url}}" alt="Getting started with Artificial Intelligence" width="100%" height="100%"></div>
+                            <div class="details">
+                                <p class="heading">{{i.name}}</p>
+                                <p class="author">Organiser: {{i.organiser}}</p>
+                                <p>Start Date: {{i.start_date}}</p>
+                                <p>End Date: {{i.end_date}}</p>
+                                <p>Total Booked: {{i.slot_booked}}<span> | Total Seat: {{i.maximum_participants}}</span></p>
+                            </div></a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <h2>Your Booked Events</h2>
+                <div id="blog">
+                    {% for i in events%}
+                        <div class="blogdiv">
+                            <a class="link" href="{%url 'Event Details' i.event.slug%}">
+                            <div class="image"><img src="{{i.event.image.url}}" alt="Getting started with Artificial Intelligence" width="100%" height="100%"></div>
+                            <div class="details">
+                                <p class="heading">{{i.event.name}}</p>
+                                <p class="author">Organiser: {{i.event.organiser}}</p>
+                                <p>Start Date: {{i.event.start_date}}</p>
+                                <p>End Date: {{i.event.end_date}}</p>
+                                <p>Total Booked: {{i.event.slot_booked}}<span> | Total Seat: {{i.event.maximum_participants}}</span></p>
+                            </div></a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+{% endblock %}

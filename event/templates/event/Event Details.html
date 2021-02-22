@@ -1,0 +1,24 @@
+{% extends 'event/Base.html' %}
+{% load static %}
+
+{%block extra_head%}
+        <link rel="stylesheet" href="{% static 'event/css/Details.css'%}"
+{%endblock%}
+
+{%block content%}
+    <h2>{{event.name}}
+        <a class="link" href="{%url 'Event Update' event.slug%}"><button>Update</button></a>
+        <a class="link" href="{%url 'Event Delete' event.slug%}"><button>Delate</button></a>
+    </h2>
+    <div class="blogwraper">
+        <div class="image"><img src="{{event.image.url}}" alt="Getting started with Artificial Intelligence" width="100%" height="100%"></div>
+        <div class="details">
+            <p class="heading">{{event.name}}<span> | Category:- <a class="link" href="{%url 'Category Page' event.category.slug%}"><button>{{event.category}}</button></a></span></p>
+            <p class="author">This Event Organised By:- {{event.organiser}}<span> | Published :- {{event.create_date}}</span></p>
+            <h3>Event Vanue:- {{event.vanue}}<span> | Event Start:- {{event.start_date}} | Event Over:- {{event.end_date}}</span></h3>
+            <h1>Total Seat:- {{event.maximum_participants}}<span> | Seat Booked:- {{event.slot_booked}} | Hurry Up Remaining Seats:- {{event.remaining_slot}}</span></h1>
+            <p>{{event.description}}</p>
+        </div>
+        <h1><a class="link" href="{%url 'Event Booked' event.slug%}"><button>Book Seat</button></a></h1>
+    </div>
+{% endblock %}

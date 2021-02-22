@@ -1,0 +1,67 @@
+{%extends 'event/Base.html'%}
+{%load static%}
+{%block extra_head%}
+    <link rel="stylesheet" href="{%static "event/css/profile.css"%}">
+    <script src="https://kit.fontawesome.com/51c0f5a80b.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{%block content%}
+    <div id='wraper'>
+        <h1>My Profile({{user.username}})</h1>
+        <div id='details_wraper'>
+            <div class='profile_img'>
+                {% if user.profile %}
+                    <img style='width:100px; border:5px solid rgb(126, 135, 145);' src="{{user.image.url}}">
+                {% else %}
+                    <img style='width:100px; border:5px solid rgb(126, 135, 145);' src="https://philadelphiapsychology.org/wp-content/uploads/2018/07/male-profile-picture.png">
+                {% endif %}
+                <p>Profile Image</p>
+                <p>{{user.bio}}</p>
+            </div>
+            <div class="field">
+                <div class='iconfield'>
+                    <span>First Name</span>
+                </div>
+                <div class='userfield'>{{user.first_name}}</div>
+            </div>
+            <div class="field">
+                <div class='iconfield'>
+                    <span>Last Name</span>
+                </div>
+                <div class='userfield'>{{user.last_name}}</div>
+            </div>
+            <div class="field">
+                <div class='iconfield'>
+                    <i class="fas fa-user-tie"></i>
+                    <span>Username</span>
+                </div>
+                <div class='userfield'>{{user.username}}</div>
+            </div>
+            <div class="field">
+                <div class='iconfield'>
+                    <i class="fa fa-envelope"></i>
+                    <span>Email</span>
+                </div>
+                <div class='userfield'>{{user.email}}</div>
+            </div>
+            <div class="field">
+                <div class='iconfield'>
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Contact</span>
+                </div>
+                <div class='userfield'>{{user.contact}}</div>
+            </div>
+            <div class="field">
+                <div class='iconfield'>
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Category</span>
+                </div>
+                <div class='userfield'>{{user.category}}</div>
+            </div>
+            <div id='updatepart'>
+                <a class="link" href="{%url 'Update' user.id%}"><button>Update</button></a>
+                <a class="link" href="{%url 'password_change' %}"><button>Change Password</button></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

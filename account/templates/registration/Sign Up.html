@@ -1,0 +1,19 @@
+{%extends 'event/Base.html'%}
+{%load static%}
+{%block extra_head%}
+    <link rel="stylesheet" href="{%static "event/css/Form.css"%}">
+    <script src="https://kit.fontawesome.com/51c0f5a80b.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{%block content%}
+    <h1>Sign Up</h1>
+    <form class='form' method='POST' enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.non_field_errors}}
+        {{form.errors}}
+        {{form.as_p}}
+        <div class='submit_btn'>
+            <input id='sub' type='submit' value='Sign Up'>
+        </div>
+    </form>
+{% endblock %}
